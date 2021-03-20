@@ -1,7 +1,7 @@
 # README.md
 
 
-## GPS Origin Determination & Mapping
+## GPS_Py: GPS Origin Determination & Mapping
 
 Author: Virág Varga
 
