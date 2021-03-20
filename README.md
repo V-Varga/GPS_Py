@@ -148,9 +148,11 @@ The example GPS_Coordinates.csv file (included in the Results_Files/ directory) 
 
 ### Step 3: Mapping in QGIS
 
+The scripts used in this portion of the program can be found within the PyQGIS_Scripts/ directory. 
+
 #### Input File
 
-The output of the CSV_Conversion.py script (GPS_Coordinates.csv) should be used
+The output of the CSV_Conversion.py script (GPS_Coordinates.csv) should be used as input. 
 
 #### Running the Scripts
 
