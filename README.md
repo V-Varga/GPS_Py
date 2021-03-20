@@ -14,7 +14,7 @@ The largest script in this program (GPS_Python.py) parses three input files in o
 
 The results file can then be reformatted with the use of the CSV_Conversion.py script, in order to prepare the data for mapping in QGIS (Quantum Geographic Information System).
 
-Finally, a series of 3 small scripts has been written (gen_vector.py, basemap.py, and reorder_layers.py) in order to map the data within the PyQGIS Python plugin for the QGIS program.
+Finally, a series of 3 small scripts has been written (gen_vector.py, basemap.py, and reorder_layers.py) in order to map the data within the PyQGIS Python plugin console for the QGIS program.
 
 
 ## References
@@ -56,9 +56,9 @@ conda install -c conda-forge scikit-learn
 
 #### Python Library: Numpy
 
-Numpy is a Python library used for expanding the sorts of mathematical calculations that can be performed in a Python script. Its website can be found [here](https://numpy.org/ "Numpy Homepage").
+Numpy is a Python library used for expanding the sorts of mathematical calculations that can be performed in a Python script, particularly on arrays. Its website can be found [here](https://numpy.org/ "Numpy Homepage").
 
-Detailed instructions for the installation of Numpy can be found [here](https://numpy.org/install/ "Numpy Installation Instructions"). If `conda` is installed on the user's computer, pandas can be installed as follows:
+Detailed instructions for the installation of Numpy can be found [here](https://numpy.org/install/ "Numpy Installation Instructions"). If `conda` is installed on the user's computer, Numpy can be installed as follows:
 
 ```bash
 conda install -c anaconda numpy
@@ -71,13 +71,9 @@ Quantum Geographic Information System (QGIS) is a free and open source GIS mappi
 
 ### Step 1: Data parsing & production with GPS_Python.py
 
-This program takes 3 input files (a file containing genetic-geographical association
-  data for test individuals, a dataset giving the geographical locations of a variety
-  of sample populations, and a file containing genetic-geographical association data
-  for sample populations), and outputs a file predicting the geographical origins of
-  the test individuals.
-The results file is in .txt format, and can be used as input for the CSV_Conversion.py file,
-  in order to produce a file formatted in such a way as to be mapped in QGIS.
+This program takes 3 input files (a file containing genetic-geographical association data for test individuals, a dataset giving the geographical locations of a variety of sample populations, and a file containing genetic-geographical association data for sample populations), and outputs a file predicting the geographical origins of the test individuals. 
+
+The results file is in .txt format, and can be used as input for the CSV_Conversion.py file, in order to produce a file formatted in such a way as to be mapped in QGIS.
 
 #### Input Files
 
@@ -98,7 +94,7 @@ POPULATION, Lat, Long
 
  - gen_file: This file contains genetic-geographical association data for a variety of sampled populations. This file does not contain headers, but its contents align with the genetic-geographical associations columns present in the data_file, preceded by a column containing the sample group ids.
 
-Samples files to test the program are provided in the Sample_Files folder. In order to test the program with the original data it was written for, please visit the website of the original program, linked above in the Citation Note section.
+In order to test the program with the original data files it was written for, please visit the website of the original program, [here](https://github.com/homologus/GPS/tree/master/GPS-original-code "Link to Original Data Files").
 
 #### Running the Script
 
@@ -118,12 +114,12 @@ The output file contains the results of the file parsing accomplished in this pr
 Population, Sample_no, Sample_id, Prediction, Lat, Lon
 ```
 
-The example GPS_Py_results.txt file(included in the Results_Files/ directory) was created using the data for which the original [GPS](https://github.com/homologus/GPS "GPS") program was created, in Elhaik et al. 2014.
+The example GPS_Py_results.txt file (included in the Results_Files/ directory) was created using the data for which the original [GPS](https://github.com/homologus/GPS "GPS") program was created, in Elhaik et al. 2014.
 
 
 ### Step 2: Data reformatting with CSV_Conversion.py
 
-This program converts the output results file from the GPS_Python.py program (GPS_Py_results.txt) into .csv format for use in plotting of data in QGIS. Specific columns are extracted and reordered, new headers are created, and the resulting dataframe is written out to a .csv file for mapping in QGIS.
+This program converts the output results file from the GPS_Python.py program (GPS_Py_results.txt) into .csv format for use in data mapping in QGIS. Specific columns are extracted and reordered, new headers are created, and the resulting dataframe is written out to a .csv file for mapping in QGIS.
 
 #### Input File
 
@@ -148,7 +144,7 @@ The example GPS_Coordinates.csv file (included in the Results_Files/ directory) 
 
 ### Step 3: Mapping in QGIS
 
-The scripts used in this portion of the program can be found within the PyQGIS_Scripts/ directory. 
+The scripts used in this portion of the program can be found within the PyQGIS_Scripts/ directory. They can be utilized together, as detailed below, to map the results in QGIS. 
 
 #### Input File
 
@@ -156,13 +152,13 @@ The output of the CSV_Conversion.py script (GPS_Coordinates.csv) should be used 
 
 #### Running the Scripts
 
-After opening QGIS, hover over the "Plugins" dropdown menu along the top of the screen. Select the "Python Console" option, and the PyQGIS Python plugin console will open. Next, click the "Show Editor" button, and then the "Open Script..." option. Open the three PyQGIS mapping script here.
+After opening QGIS, hover over the "Plugins" dropdown menu along the top of the screen. Select the "Python Console" option, and the PyQGIS Python plugin console will open. Next, click the "Show Editor" button, and then the "Open Script..." option. Open the three PyQGIS mapping scripts here.
 
 Begin by editing the gen_vector.py script file to include the correct path to the GPS_Coordinates.csv file on the user's computer. Then select "Run". A project does not already need to be open in order for the script to run. Points should appear on a blank white backdrop. The GeneticOrigins vector layer mapping the genetic-geographic data has been created.
 
 Next, run the basemap.py script. This will add the OpenStreetMap background layer. The plotted points will disappear at this stage, as new layers are automatically placed on top of the previous.
 
-Finally, run the reorder_layers.py script. This place the basemap on the bottom, and the GeneticOrigins layer on the top. The coordinates may look to be inaccurately positioned, but this is not cause for concern. Viewing the entire 2-Dimensional projection of the globe can cause distortions in the way coordinates are displayed; zooming in slightly (with ex. scrolling with a mouse or mousepad) will fix this issue. 
+Finally, run the reorder_layers.py script. This places the basemap on the bottom, and the GeneticOrigins layer on the top. The coordinates may look to be inaccurately positioned, but this is not cause for concern. Viewing the entire 2-Dimensional projection of the globe can cause distortions in the way coordinates are displayed; zooming in slightly (with ex. scrolling with a mouse or mousepad) will fix this issue. 
 
 At this stage, the user is free to explore the map and data, and export whichever portion(s) of the map they wish, using the QGIS GUI.
 
@@ -170,9 +166,7 @@ Note: The gen_vector.py script must be run before the basemap.py script. Creatin
 
 #### Results
 
-The results produced will vary depending on the dataset, and which portions of the map the user wishes to export. The example image below shows the mapping completed on the data from the original GPS program, which can be found [here](https://github.com/homologus/GPS/tree/master/GPS-original-code "GPS Original Input Data").
-
-The example map below (included in the Results_Files/ directory) was created using the data for which the original [GPS](https://github.com/homologus/GPS "GPS") program was created, in Elhaik et al. 2014.
+The results produced will vary depending on the dataset, and which portions of the map the user wishes to export. The example map below (included in the Results_Files/ directory) was created using the data for which the original [GPS](https://github.com/homologus/GPS "GPS") program was created, in Elhaik et al. 2014.
 
 ![Example Map](Results_Files/GenMap_East.png)
 
@@ -184,7 +178,7 @@ virag.varga.bioinfo@gmail.com
 
 ### Software Versions:
 
-For additional clarity and quality-checking, please note below are the versions of all software used in this analysis:
+For additional clarity and quality-checking, please note below the versions of all software used in this analysis:
  - Python: 3.8.6
    - Numpy: 1.20.1
    - Pandas: 1.2.1
