@@ -112,11 +112,13 @@ python GPS_Python.py data_file geo_file gen_file
 
 #### Results
 
-The output file contains the results of the file parsing accomplished in this program. It is a .txt file, and its contents are found under the following column names:
+The output file contains the results of the file parsing accomplished in this program. It is named GPS_Py_results.txt, and its contents are found under the following column names:
 
 ```text
 Population, Sample_no, Sample_id, Prediction, Lat, Lon
 ```
+
+The example GPS_Py_results.txt file(included in the Results_Files/ directory) was created using the data for which the original [GPS](https://github.com/homologus/GPS "GPS") program was created, in Elhaik et al. 2014.
 
 
 ### Step 2: Data reformatting with CSV_Conversion.py
@@ -140,6 +142,8 @@ python CSV_Conversion.py results_file
 #### Results
 
 The resulting file is named GPS_Coordinates.csv, and is appropriately formatted for mapping in QGIS.
+
+The example GPS_Coordinates.csv file (included in the Results_Files/ directory) was created using the data for which the original [GPS](https://github.com/homologus/GPS "GPS") program was created, in Elhaik et al. 2014.
 
 
 ### Step 3: Mapping in QGIS
@@ -166,9 +170,9 @@ Note: The gen_vector.py script must be run before the basemap.py script. Creatin
 
 The results produced will vary depending on the dataset, and which portions of the map the user wishes to export. The example image below shows the mapping completed on the data from the original GPS program, which can be found [here](https://github.com/homologus/GPS/tree/master/GPS-original-code "GPS Original Input Data").
 
-The example map below was created using the data for which the original [GPS](https://github.com/homologus/GPS "GPS") program was created, ie. Elhaik et al. 2014.
+The example map below (included in the Results_Files/ directory) was created using the data for which the original [GPS](https://github.com/homologus/GPS "GPS") program was created, in Elhaik et al. 2014.
 
-![Example Map](Results/GenMap_East.png)
+![Example Map](Results_Files/GenMap_East.png)
 
 ## Support
 
